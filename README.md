@@ -30,3 +30,9 @@ Never commit secrets, API keys, passwords, private certificates, Android keystor
 
 Team carp galilee  
 Email: ithamarcohen2209@gmail.com
+
+## Current application scope
+
+The current InfoCarp application supports personal and group fishing sessions, competitions with competition-only Zones/Sectors, competition rosters of up to three active anglers per participating group, sector mapping, catch history, rankings and Hall of Fame.
+
+The production application remains at `https://infocarp.com`; this public repository remains intentionally limited to legal/support content.
