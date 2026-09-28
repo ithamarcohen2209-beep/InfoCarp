@@ -1,15 +1,32 @@
-# InfoCarp App Store Website
+# InfoCarp — Public Legal & Support Site
 
-Static GitHub Pages website for InfoCarp by Team carp galilee.
+This public repository contains the static legal and support pages for **InfoCarp** by **Team carp galilee**.
 
-Before publishing:
-1. Replace `[ADD SUPPORT EMAIL]` in `privacy.html`, `support.html`, and `terms.html`.
-2. Push these files to a GitHub repository.
-3. Open Settings → Pages.
-4. Choose **Deploy from a branch**, branch `main`, folder `/ (root)`.
-5. Save and wait for GitHub Pages to publish.
+## Official production application
 
-App Store Connect:
-- Privacy Policy URL: `https://YOUR-USERNAME.github.io/REPOSITORY/privacy.html`
-- Support URL: `https://YOUR-USERNAME.github.io/REPOSITORY/support.html`
-- Marketing URL (optional): `https://YOUR-USERNAME.github.io/REPOSITORY/`
+InfoCarp production: https://infocarp.com
+
+The application itself is maintained separately. This public repository intentionally does **not** contain private application source code, API secrets, credentials, signing keys, Firebase service-account data, SMTP credentials or Supabase privileged keys.
+
+## GitHub Pages
+
+GitHub Pages hosts the public legal/support documents used for distribution and store listings:
+
+- Privacy Policy: https://ithamarcohen2209-beep.github.io/InfoCarp/privacy.html
+- Support: https://ithamarcohen2209-beep.github.io/InfoCarp/support.html
+- Terms of Use: https://ithamarcohen2209-beep.github.io/InfoCarp/terms.html
+
+The apex domain `infocarp.com` is reserved for the production application and must not be assigned to GitHub Pages. A dedicated subdomain such as `legal.infocarp.com` may be added later if desired.
+
+## Platforms
+
+InfoCarp is maintained for Web, Android and iOS. Legal and support information in this repository should remain consistent with the current production features.
+
+## Security
+
+Never commit secrets, API keys, passwords, private certificates, Android keystores, Apple signing material, Firebase service-account credentials, SMTP credentials or privileged Supabase keys to this repository.
+
+## Support
+
+Team carp galilee  
+Email: ithamarcohen2209@gmail.com
