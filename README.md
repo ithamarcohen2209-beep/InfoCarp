@@ -15,6 +15,8 @@ GitHub Pages hosts the public legal/support documents used for distribution and 
 - Privacy Policy: https://ithamarcohen2209-beep.github.io/InfoCarp/privacy.html
 - Support: https://ithamarcohen2209-beep.github.io/InfoCarp/support.html
 - Terms of Use: https://ithamarcohen2209-beep.github.io/InfoCarp/terms.html
+- Account deletion: https://ithamarcohen2209-beep.github.io/InfoCarp/account-deletion.html
+- Security reporting: https://ithamarcohen2209-beep.github.io/InfoCarp/security.html
 
 The apex domain `infocarp.com` is reserved for the production application and must not be assigned to GitHub Pages. A dedicated subdomain such as `legal.infocarp.com` may be added later if desired.
 
