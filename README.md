@@ -33,6 +33,6 @@ Email: ithamarcohen2209@gmail.com
 
 ## Current application scope
 
-The current InfoCarp application supports personal and group fishing sessions, competitions with competition-only Zones/Sectors, competition rosters of up to three active anglers per participating group, sector mapping, catch history, rankings and Hall of Fame.
+The current InfoCarp application supports email and Google sign-in, personal and group fishing sessions, shared competitions with competition-only Zones/Sectors, competition rosters of up to three active anglers per participating group, catch reporting with photos, sector and bathymetry mapping, rod timers and reminders, rankings, statistics, Hall of Fame, multilingual UI, and native push notifications on supported mobile platforms. Fish-photo relevance checks are designed to run locally in the app rather than sending catch photos to an external vision service solely for validation.
 
 The production application remains at `https://infocarp.com`; this public repository remains intentionally limited to legal/support content.
