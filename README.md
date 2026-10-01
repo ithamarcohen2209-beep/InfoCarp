@@ -42,3 +42,5 @@ The production application remains at `https://infocarp.com`; this public reposi
 ## October 2026 feature notes
 
 Measured bathymetry supports interactive terrain, top view, contours and depth profiles; it does not invent depths outside the measurement envelope. Competition invitations include Google Calendar templates and ICS export for manual saving; calendar copies do not update automatically. Current explicit profile consent can include eligible historical and future catches in community/Hall sharing, with session/catch exclusions, anonymous photo/name suppression and separate manual Hall controls. Reliable native ICS sharing requires a mobile build containing the updated bridge.
+
+Competition management is available from the Home competition card, including sharing, team invitations, sector assignments and live ranking. Participating groups use their own activity-scoped rod timers. The mapping journal lists prior maps within the selected personal or group scope.
