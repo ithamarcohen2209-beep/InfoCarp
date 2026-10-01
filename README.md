@@ -55,3 +55,9 @@ Competition ranking offers expandable team details and an optional full table, i
 Catch photos are checked locally, including overlapping regions for a fish held by a person. Failed or stalled library loads can recover on a subsequent attempt. Classification is probabilistic and can still reject valid photos; the original image is needed to investigate a specific rejection.
 
 Competition calendar choices use Google Calendar or an ICS calendar file in the browser/PWA. Direct Apple event editing is implemented in the native iOS source and requires a native build containing that bridge; a Web deployment does not install this native feature. Physical device behavior remains subject to device validation.
+
+## Competition roles and contacts (Web release 177)
+
+Competition judges and active participants are mutually exclusive within the same competition. Judges explicitly provide a contact phone number that is visible to the competition's authorized participants. Deleted competitions do not trigger phone requests. Live ranking expands to the full viewport, with team cards on narrow screens.
+
+Android package prepared: 1.63.0 (version code 65). No prior Google Play publication is assumed.
