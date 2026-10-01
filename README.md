@@ -48,3 +48,10 @@ Competition management is available from the Home competition card, including sh
 The latest mapping implementation adds map-only fullscreen, a collapsible measurement list, touch pan/pinch zoom and measured slope/depression insights. Depressions require surrounding measurements and distant/unmeasured gaps are excluded. Home management also exposes a competitor view and active representatives under each team, with one live ranking in the management overview. Managers operating competitor tools remain limited to their own accepted group's timers.
 
 Competition ranking offers expandable team details and an optional full table, including selected anglers, sector, derived Zone, available Zone beaches, kg average and gap to the previous place. One calendar entry reveals provider choices. The Smart Journal explicitly distinguishes personal fishing history from active competition data. Initial team roster selection can be completed during an active competition; previously selected rosters remain locked after start. Local catch-photo checks examine overlapping regions before rejecting person-with-fish images; photo-specific model accuracy still requires representative image testing.
+
+
+### Photo and calendar reliability
+
+Catch photos are checked locally, including overlapping regions for a fish held by a person. Failed or stalled library loads can recover on a subsequent attempt. Classification is probabilistic and can still reject valid photos; the original image is needed to investigate a specific rejection.
+
+Competition calendar choices use Google Calendar or an ICS calendar file in the browser/PWA. Direct Apple event editing is implemented in the native iOS source and requires a native build containing that bridge; a Web deployment does not install this native feature. Physical device behavior remains subject to device validation.
