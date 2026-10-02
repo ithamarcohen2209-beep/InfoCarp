@@ -72,4 +72,4 @@ Privacy and account-deletion documents identify the individual operator and desc
 
 The Supabase project currently uses Free. Managed daily backups are not claimed. An independent encrypted export is a possible lower-cost option, but no such backup has been configured or validated. Backup payloads and credentials must remain outside this public repository.
 
-A support-mail test was sent with owner authorization on 2 October 2026. Sending is confirmed; receipt in the selected support mailbox still requires verification. Google Play Console declarations and the exact Cloudflare plan remain access-dependent checks.
+A support-mail test was sent with owner authorization on 2 October 2026 at 16:02 UTC. Receipt was verified directly in the Inbox of `thecarpgalilee@gmail.com`. Google Play Console declarations and the exact Cloudflare plan remain access-dependent checks.
