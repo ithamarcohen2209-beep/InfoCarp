@@ -77,3 +77,9 @@ A support-mail test was sent with owner authorization on 2 October 2026 at 16:02
 ### Independent encrypted backup setup — 2 October 2026
 
 The owner selected the free route. A private daily workflow has been prepared for encrypted Postgres, D1, R2 and public Supabase Storage exports with a seven-day artifact retention limit. The private recovery key is kept outside the repository and CI. The account's GitHub Actions paid-usage budget is now zero with Stop usage enabled; exhausted free allowances can stop backups and app builds. Activation still requires the private `SUPABASE_DB_URL` configuration and a successful first production export. No new complete daily backup or full Supabase disaster-recovery drill is claimed before that verification. Database dumps, photos, credentials and private recovery keys are never published in this public repository.
+
+## Web 185 follow-up — 2 October 2026
+
+Session mutations now guard against delayed cloud refreshes and reload canonical server data. Home finish controls use the same operation as History and Sessions; legacy activity deletion waits for synchronization before reporting success. Photo forms are preserved during periodic refresh, show preparation feedback and validate downsampled camera images locally. Forecast requests reuse recent data, share concurrent calls and use network deadlines; weekly/day selection and pressure remain available.
+
+The web regression suite passed 605 tests. This is not a certification of every app function: a physical Android device is still required to verify installed picker/camera behavior. The encrypted free backup is prepared but production database backups remain inactive until the private database connection secret is configured and a complete run and restore check succeed. No database content, credentials, recovery private key or application source is published in this repository.
