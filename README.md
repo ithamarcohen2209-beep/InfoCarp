@@ -73,3 +73,7 @@ Privacy and account-deletion documents identify the individual operator and desc
 The Supabase project currently uses Free. Managed daily backups are not claimed. An independent encrypted export is a possible lower-cost option, but no such backup has been configured or validated. Backup payloads and credentials must remain outside this public repository.
 
 A support-mail test was sent with owner authorization on 2 October 2026 at 16:02 UTC. Receipt was verified directly in the Inbox of `thecarpgalilee@gmail.com`. Google Play Console declarations and the exact Cloudflare plan remain access-dependent checks.
+
+### Independent encrypted backup setup — 2 October 2026
+
+The owner selected the free route. A private daily workflow has been prepared for encrypted Postgres, D1, R2 and public Supabase Storage exports with a seven-day artifact retention limit. The private recovery key is kept outside the repository and CI. The account's GitHub Actions paid-usage budget is now zero with Stop usage enabled; exhausted free allowances can stop backups and app builds. Activation still requires the private `SUPABASE_DB_URL` configuration and a successful first production export. No new complete daily backup or full Supabase disaster-recovery drill is claimed before that verification. Database dumps, photos, credentials and private recovery keys are never published in this public repository.
