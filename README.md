@@ -1,85 +1,75 @@
 # InfoCarp — Public Legal & Support Site
 
-This public repository contains the static legal and support pages for **InfoCarp** by **Itamar Cohen (individual operator)**.
+Public legal and support information for **InfoCarp**, operated by **Itamar Cohen (individual operator)**. The application is available at https://infocarp.com.
 
-## Official production application
+## Publication boundary
 
-InfoCarp production: https://infocarp.com
+This repository intentionally contains the static legal/support site, not the private application source, backend, native projects or operational infrastructure. Do not add credentials, tokens, production configuration, signing material, customer data, internal diagnostics, deployment workflows or backup/recovery material.
 
-The application itself is maintained separately. This public repository intentionally does **not** contain private application source code, API secrets, credentials, signing keys, Firebase service-account data, SMTP credentials or Supabase privileged keys.
+## Pages
 
-## GitHub Pages
+- [Home](index.html)
+- [Privacy Policy](privacy.html)
+- [Support](support.html)
+- [Terms of Use](terms.html)
+- [Account and data deletion](account-deletion.html)
+- [Security reporting](security.html)
 
-GitHub Pages hosts the public legal/support documents used for distribution and store listings:
+The corresponding public URLs use `https://ithamarcohen2209-beep.github.io/InfoCarp/`. Keep `infocarp.com` reserved for the application; this repository does not configure that domain.
 
-- Privacy Policy: https://ithamarcohen2209-beep.github.io/InfoCarp/privacy.html
-- Support: https://ithamarcohen2209-beep.github.io/InfoCarp/support.html
-- Terms of Use: https://ithamarcohen2209-beep.github.io/InfoCarp/terms.html
-- Account deletion: https://ithamarcohen2209-beep.github.io/InfoCarp/account-deletion.html
-- Security reporting: https://ithamarcohen2209-beep.github.io/InfoCarp/security.html
+## Clone, validate and run
 
-The apex domain `infocarp.com` is reserved for the production application and must not be assigned to GitHub Pages. A dedicated subdomain such as `legal.infocarp.com` may be added later if desired.
+Requirements: Git and Python **3.11 or newer**. The site and its build/tests have no third-party runtime dependencies, API keys, environment variables or `.env` files. Pinned optional developer tools in `requirements-dev.txt` provide Python lint and type checking. The site contains no JavaScript or TypeScript; application build/typecheck commands do not apply here.
 
-## Platforms
+```sh
+git clone https://github.com/ithamarcohen2209-beep/InfoCarp.git
+cd InfoCarp
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements-dev.txt
+python3 -m ruff check scripts tests
+python3 -m mypy
+python3 scripts/validate.py
+python3 -m unittest discover -s tests -v
+python3 -m scripts.build
+python3 -m http.server 8000 --directory build
+```
 
-InfoCarp is maintained for Web, Android and iOS. Legal and support information in this repository should remain consistent with the current production features.
+Open `http://localhost:8000` in your own browser. Stop the server with Ctrl+C. The build copies only the six public HTML pages, stylesheet and logo into `build/`; it does not modify source pages or deploy anything. CI runs the same lint, Python type checking, validation, tests and build, without production credentials or deployment steps.
 
-## Security
+The validator checks HTML structure, local links/assets, unsafe URL schemes, CSS balance and high-confidence secret patterns. It is an additional safeguard, not a substitute for reviewing disclosure and privacy changes. No `.env.example` is needed because this site consumes no environment variables; never copy the application's environment configuration here.
 
-Never commit secrets, API keys, passwords, private certificates, Android keystores, Apple signing material, Firebase service-account credentials, SMTP credentials or privileged Supabase keys to this repository.
+## Current application features
 
-## Support
+InfoCarp supports personal and group fishing sessions; shared competitions with managers, judges and competitors; catch reporting and photos; searchable saved fishing locations; activity history and summaries; rod timers/reminders; weather and environmental information; measured sector/depth maps; rankings, statistics and Hall of Fame; and fishing insights, with an assistant where available. The application UI supports Hebrew, English and Russian. Native notifications and file/calendar sharing depend on platform support, permissions and the installed build.
 
-Itamar Cohen (individual operator)  
-Email: thecarpgalilee@gmail.com
+Forecasts include pressure and selectable daily details in a seven-day view. Current group members can finish or delete a teammate’s personal session through permission-checked operations; deleting a session keeps historical catches. Photo updates preserve existing references during normal synchronization, while explicit removal remains supported. Offline cached information may be available on the device and is reconciled when connectivity returns.
 
-## Current application scope
+Competition features include code/QR invitations, Zones/Sectors, team representatives, up to three active anglers per group, catch review and final-result history. Judge contact numbers are disclosed to authorized competition participants. Competition calendar exports are optional and external calendar copies must be updated manually.
 
-The current InfoCarp application supports email and Google sign-in, personal and group fishing sessions, shared competitions with competition-only Zones/Sectors, competition rosters of up to three active anglers per participating group, catch reporting with photos, sector and bathymetry mapping, rod timers and reminders, activity history with live and post-session Smart Fishing Journal insights, natural-language fishing questions, optional privacy-controlled community intelligence, rankings, statistics, Hall of Fame, multilingual UI, and native push notifications on supported mobile platforms. Fish-photo relevance checks are designed to run locally in the app rather than sending catch photos to an external vision service solely for validation.
+Bathymetry uses saved measurements and does not invent depth outside the measurement envelope. Maps support terrain, contours, profiles, touch controls and fullscreen. Smart Fishing Journal insights distinguish personal history from competition data. Community/Hall sharing is optional, private by default and controlled through consent and per-session/per-catch exclusions; anonymous sharing suppresses identity/photo details as described in the privacy policy.
 
-The production application remains at `https://infocarp.com`; this public repository remains intentionally limited to legal/support content.
+### Check List and shopping estimates
 
-## October 2026 feature notes
+- Equipment supports quantities, status and one or more people responsible for bringing it.
+- Food/shopping is a shared group list, without a “who brings it” assignment.
+- Excel import offers editable names, quantities and categories, skips headings/empty rows and merges duplicates without counting the same imported quantity twice.
+- Shopping prices use available real retailer catalogs, including Shufersal and Carrefour. Safe approximate matches are labeled **estimated**; stronger matches are **exact**; missing or unsafe matches are **unavailable**, not zero.
+- The basket shows a partial estimated total, exact/estimated/unavailable counts and coverage. Quantity and package size are separate; compatible offers are compared rather than assuming the cheapest unrelated item is a match.
+- Incomplete baskets cannot be represented as a fully comparable cheapest store. Availability, freshness, units, package sizes and estimated produce weights can affect results. Verify important prices and quantities before purchasing; estimates are not a retailer quotation.
 
-Measured bathymetry supports interactive terrain, top view, contours and depth profiles; it does not invent depths outside the measurement envelope. Competition invitations include Google Calendar templates and ICS export for manual saving; calendar copies do not update automatically. Current explicit profile consent can include eligible historical and future catches in community/Hall sharing, with session/catch exclusions, anonymous photo/name suppression and separate manual Hall controls. Reliable native ICS sharing requires a mobile build containing the updated bridge.
+Catch-photo presence checks can send a reduced image to OpenAI. They are probabilistic, and uncertain/unavailable validation does not guarantee the image is accepted. See the privacy policy for external processing and retention limits.
 
-Competition management is available from the Home competition card, including sharing, team invitations, sector assignments and live ranking. Participating groups use their own activity-scoped rod timers. The mapping journal uses one shared library for the active group; owners can delete one or multiple of their own saved maps.
+## Version information reviewed on 10 October 2026
 
-The latest mapping implementation adds map-only fullscreen, a collapsible measurement list, touch pan/pinch zoom and measured slope/depression insights. Depressions require surrounding measurements and distant/unmeasured gaps are excluded. Home management also exposes a competitor view and active representatives under each team, with one live ranking in the management overview. Managers operating competitor tools remain limited to their own accepted group's timers.
+- Web source release: **212**.
+- Android source/build: **1.69.0**, version code **71**.
+- iOS source: **1.61.0**, build **62**.
 
-Competition ranking offers expandable team details and an optional full table, including selected anglers, sector, derived Zone, available Zone beaches, kg average and gap to the previous place. One calendar entry reveals provider choices. The Smart Journal explicitly distinguishes personal fishing history from active competition data. Initial team roster selection can be completed during an active competition; previously selected rosters remain locked after start. Local catch-photo checks examine overlapping regions before rejecting person-with-fish images; photo-specific model accuracy still requires representative image testing.
+These are source/build identifiers, not proof of Google Play or App Store publication. See [CHANGELOG.md](CHANGELOG.md) for public-facing changes and [AUDIT.md](AUDIT.md) for the synchronization boundary.
 
+## Contributing and security
 
-### Photo and calendar reliability
+Update related support, privacy and terms text when a feature changes user-facing behavior or data handling. Run the documented checks and review every diff before publication. Do not claim successful deployment, legal certification, data recovery or device testing without evidence.
 
-Catch photos are checked locally, including overlapping regions for a fish held by a person. Failed or stalled library loads can recover on a subsequent attempt. Classification is probabilistic and can still reject valid photos; the original image is needed to investigate a specific rejection.
-
-Competition calendar choices use Google Calendar or an ICS calendar file in the browser/PWA. Direct Apple event editing is implemented in the native iOS source and requires a native build containing that bridge; a Web deployment does not install this native feature. Physical device behavior remains subject to device validation.
-
-## Competition roles and contacts (Web release 177)
-
-Competition judges and active participants are mutually exclusive within the same competition. Judges explicitly provide a contact phone number that is visible to the competition's authorized participants. Deleted competitions do not trigger phone requests. Live ranking expands to the full viewport, with team cards on narrow screens.
-
-Android source configuration: 1.64.0 (version code 66). No prior Google Play publication is assumed.
-
-## Current Web release 184 (2 October 2026)
-
-Home uses one Sessions and Competitions card with a consistent icon and styling. Forecasts are compact, include atmospheric pressure, and offer a collapsible seven-day view with selectable daily details. Current group members can finish or delete a teammate's personal session through a permission-checked server operation; session deletion retains historical catches. Hall competition scoring uses qualifying finalized official competition results, separately from personal/group fish records.
-
-Account and group deletion record completion proof atomically. The private photo-cleanup queue checks that proof before retrying approved photo deletion every 15 minutes, subject to infrastructure availability. No valid proof means no photo deletion. Temporary queue-confirmation failures can recover automatically.
-
-Privacy and account-deletion documents identify the individual operator and describe actual archive retention, recovery-copy limitations, group sharing and processors. Published competition/Hall archives currently have no automatic expiry and may retain identifying information and permitted photos. No qualified legal certification or verification of store declarations is claimed.
-
-The Supabase project currently uses Free. Managed daily backups are not claimed. An independent encrypted export is a possible lower-cost option, but no such backup has been configured or validated. Backup payloads and credentials must remain outside this public repository.
-
-A support-mail test was sent with owner authorization on 2 October 2026 at 16:02 UTC. Receipt was verified directly in the Inbox of `thecarpgalilee@gmail.com`. Google Play Console declarations and the exact Cloudflare plan remain access-dependent checks.
-
-### Independent encrypted backup setup — 2 October 2026
-
-The owner selected the free route. A private daily workflow has been prepared for encrypted Postgres, D1, R2 and public Supabase Storage exports with a seven-day artifact retention limit. The private recovery key is kept outside the repository and CI. The account's GitHub Actions paid-usage budget is now zero with Stop usage enabled; exhausted free allowances can stop backups and app builds. Activation still requires the private `SUPABASE_DB_URL` configuration and a successful first production export. No new complete daily backup or full Supabase disaster-recovery drill is claimed before that verification. Database dumps, photos, credentials and private recovery keys are never published in this public repository.
-
-## Web 185 follow-up — 2 October 2026
-
-Session mutations now guard against delayed cloud refreshes and reload canonical server data. Home finish controls use the same operation as History and Sessions; legacy activity deletion waits for synchronization before reporting success. Photo forms are preserved during periodic refresh, show preparation feedback and validate downsampled camera images locally. Forecast requests reuse recent data, share concurrent calls and use network deadlines; weekly/day selection and pressure remain available.
-
-The web regression suite passed 605 tests. This is not a certification of every app function: a physical Android device is still required to verify installed picker/camera behavior. The encrypted free backup is prepared but production database backups remain inactive until the private database connection secret is configured and a complete run and restore check succeed. No database content, credentials, recovery private key or application source is published in this repository.
+Report security issues privately as described in [SECURITY.md](SECURITY.md). Support: **thecarpgalilee@gmail.com**.
