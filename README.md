@@ -29,7 +29,7 @@ python3 -m venv .venv
 python3 -m pip install -r requirements-dev.txt
 python3 -m ruff check scripts tests
 python3 -m mypy
-python3 scripts/validate.py
+python3 scripts/validate.py --tracked
 python3 -m unittest discover -s tests -v
 python3 -m scripts.build
 python3 -m http.server 8000 --directory build
@@ -37,7 +37,7 @@ python3 -m http.server 8000 --directory build
 
 Open `http://localhost:8000` in your own browser. Stop the server with Ctrl+C. The build copies only the six public HTML pages, stylesheet and logo into `build/`; it does not modify source pages or deploy anything. CI runs the same lint, Python type checking, validation, tests and build, without production credentials or deployment steps.
 
-The validator checks HTML structure, local links/assets, unsafe URL schemes, CSS balance and high-confidence secret patterns. It is an additional safeguard, not a substitute for reviewing disclosure and privacy changes. No `.env.example` is needed because this site consumes no environment variables; never copy the application's environment configuration here.
+The tracked-file allowlist enforces the legal/support-only publication boundary: adding application, native, operational or environment files requires an explicit scope review. The validator checks HTML structure, local links/assets, unsafe URL schemes, CSS balance and high-confidence secret patterns. It is an additional safeguard, not a substitute for reviewing disclosure and privacy changes. No `.env.example` is needed because this site consumes no environment variables; never copy the application's environment configuration here.
 
 ## Current application features
 

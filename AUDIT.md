@@ -1,6 +1,6 @@
 # Public synchronization audit — 10 October 2026
 
-The full current application repository was inventoried against all public-site files, rather than comparing only the latest PR. The site intentionally remains a legal/support repository.
+The full current application repository was inventoried against all public-site files, rather than comparing only the latest PR. The owner explicitly confirmed that the public repository must remain a legal/support site only. A tracked-file allowlist now enforces this boundary in CI.
 
 ## Public-safe updates
 

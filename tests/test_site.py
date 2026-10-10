@@ -3,7 +3,7 @@ import shutil
 import tempfile
 import unittest
 
-from scripts.validate import PAGES, ASSETS, secret_findings, validate_site
+from scripts.validate import PAGES, ASSETS, PUBLIC_FILES, check_publication_scope, secret_findings, validate_site
 from scripts.build import build
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +22,13 @@ class PublicSiteTests(unittest.TestCase):
     def alter(self, old: str, new: str) -> None:
         page = self.root / 'index.html'
         page.write_text(page.read_text().replace(old, new))
+
+    def test_only_approved_public_files_can_be_tracked(self) -> None:
+        self.assertEqual(check_publication_scope(list(PUBLIC_FILES)), [])
+        for path in ['web/server/index.js', 'android/app/build.gradle',
+                     'ops/backup/backup.py', '.env.example',
+                     '.github/workflows/release-production.yml']:
+            self.assertTrue(check_publication_scope([path]))
 
     def test_current_site_has_valid_links_and_structure(self) -> None:
         self.assertEqual(validate_site(self.root), [])

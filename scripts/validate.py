@@ -3,11 +3,19 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import re
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ('index.html', 'privacy.html', 'support.html', 'terms.html',
          'account-deletion.html', 'security.html')
 ASSETS = ('style.css', 'assets/infocarp-logo.png')
+PUBLIC_FILES = frozenset(PAGES + ASSETS + (
+    'README.md', 'AUDIT.md', 'CHANGELOG.md', 'SECURITY.md', '.gitignore',
+    'requirements-dev.txt', 'pyproject.toml',
+    'scripts/__init__.py', 'scripts/build.py', 'scripts/validate.py',
+    'tests/test_site.py', '.github/workflows/validate-public-site.yml',
+))
 VOID = frozenset('area base br col embed hr img input link meta param source track wbr'.split())
 SECRET_PATTERNS = (
     r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
@@ -94,6 +102,11 @@ def validate_page(path: Path, root: Path) -> list[str]:
     return errors
 
 
+def check_publication_scope(paths: list[str]) -> list[str]:
+    return ['File outside the approved legal/support publication scope: ' + path
+            for path in paths if path not in PUBLIC_FILES]
+
+
 def secret_findings(text: str) -> bool:
     return any(re.search(pattern, text) for pattern in SECRET_PATTERNS)
 
@@ -140,6 +153,10 @@ def validate_site(root: Path = ROOT) -> list[str]:
 
 if __name__ == '__main__':
     findings = validate_site()
+    if '--tracked' in sys.argv[1:]:
+        tracked = subprocess.check_output(
+            ['git', 'ls-files', '-z'], cwd=ROOT, text=True).split('\0')
+        findings.extend(check_publication_scope([path for path in tracked if path]))
     for finding in findings:
         print(finding)
     if findings:
