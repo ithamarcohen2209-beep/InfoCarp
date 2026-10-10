@@ -1,0 +1,27 @@
+name: Validate public legal site
+on:
+  pull_request:
+  push:
+    branches: [main, 'audit/**']
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned public development checks
+        run: python3 -m pip install -r requirements-dev.txt
+      - name: Lint and typecheck public tooling
+        run: |
+          python3 -m ruff check scripts tests
+          python3 -m mypy
+      - name: Validate public pages and disclosure safeguards
+        run: python3 scripts/validate.py --tracked
+      - name: Test validation and static build behavior
+        run: python3 -m unittest discover -s tests -v
+      - name: Build standalone public site
+        run: python3 -m scripts.build

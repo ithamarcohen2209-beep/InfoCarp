@@ -1,0 +1,10 @@
+build/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.jks
+*.keystore
+.venv/
+.mypy_cache/
+.ruff_cache/
